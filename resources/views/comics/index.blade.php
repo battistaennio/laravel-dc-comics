@@ -22,6 +22,7 @@
                         <td>{{ $comic->price }}</td>
                         <td>{{ $comic->type }}</td>
                         <td><img class="thumb" src="{{ $comic->thumb }}" alt="{{ $comic->title }}"></td>
+                        <td><a href="{{ route('comics.show', $comic) }}">Details</a></td>
                     </tr>
                 @endforeach
             </tbody>
