@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Functions\Helper;
 use App\Models\Comic;
 use Illuminate\Http\Request;
+
 
 class ComicController extends Controller
 {
@@ -12,7 +14,7 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $comics = Comic::all();
+        $comics = Comic::orderBy('id', 'desc')->get();
         return view('comics.index', compact('comics'));
     }
 
@@ -21,7 +23,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        return view('comics.create');
     }
 
     /**
@@ -29,7 +31,13 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $new_comic = new Comic();
+        $data['slug'] = Helper::generateSlug($data['title'], Comic::class);
+        $new_comic->fill($data);
+        $new_comic->save();
+
+        return redirect()->route('comics.show', $new_comic->id);
     }
 
     /**
