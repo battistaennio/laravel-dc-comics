@@ -12,6 +12,7 @@
                     <th scope="col">Price</th>
                     <th scope="col">Type</th>
                     <th scope="col">Thumb</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,7 +23,16 @@
                         <td>{{ $comic->price }}</td>
                         <td>{{ $comic->type }}</td>
                         <td><img class="thumb" src="{{ $comic->thumb }}" alt="{{ $comic->title }}"></td>
-                        <td><a href="{{ route('comics.show', $comic) }}">Details</a></td>
+                        <td>
+                            <a class="btn btn-warning" href="{{ route('comics.show', $comic) }}">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+
+                            <a class="btn btn-warning" href="{{ route('comics.edit', $comic) }}">
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
+
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

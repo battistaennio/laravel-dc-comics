@@ -2,10 +2,15 @@
 
 @section('content')
     <div class="container my-5">
-        <h1>Comic "{{ $comic->title }}" detail</h1>
+        <h1>
+            Comic "{{ $comic->title }}" detail
+            <a class="btn btn-warning" href="{{ route('comics.edit', $comic) }}">
+                <i class="fa-solid fa-pencil"></i>
+            </a>
+        </h1>
 
         <div class="row justify-content-center">
-            <div class="col text-center">
+            <div class="col-3 text-center">
                 <img class="img-fluid" src="{{ $comic->thumb }}" alt="{{ $comic->title }}">
             </div>
         </div>
