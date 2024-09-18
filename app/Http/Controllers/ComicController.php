@@ -38,7 +38,7 @@ class ComicController extends Controller
                 'thumb' => 'required|max:255',
                 'price' => 'required|min:3|max:10',
                 'series' => 'required|min:3|max:150',
-                'sale_date' => 'required|max:50',
+                'sale_date' => 'required|date|max:50',
                 'type' => 'required|max:50'
             ],
             [
@@ -58,6 +58,7 @@ class ComicController extends Controller
                 'series.max' => 'Il campo series può contenere massimo :max caratteri',
 
                 'sale_date.required' => 'Il campo sale_date è obbligatorio',
+                'sale_date.date' => 'Non hai inserito una data corretta',
                 'sale_date.max' => 'Il campo sale_date può contenere massimo :max caratteri',
 
                 'type.required' => 'Il campo type è obbligatorio',
