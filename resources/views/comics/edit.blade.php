@@ -47,11 +47,11 @@
                     <input value="{{ old('price', $comic->price) }}" name="price" type="text"
                         class="form-control input-group @error('price') is-invalid @enderror" id="price"
                         placeholder="add price">
-                    @error('price')
-                        <small class="text-danger">*{{ $message }}</small>
-                    @enderror
-
                 </div>
+                @error('price')
+                    <small class="text-danger">*{{ $message }}</small>
+                @enderror
+
             </div>
 
             <div class="mb-3">

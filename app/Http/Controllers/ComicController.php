@@ -107,7 +107,13 @@ class ComicController extends Controller
         if ($data['title'] != $comic->title) {
             $data['slug'] = Helper::generateSlug($data['title'], Comic::class);
         }
-        $data['price'] = '$ ' . $data['price'];
+
+        if (substr_count($data['price'], '$') == 0) {
+            $data['price'] = '$ ' . $data['price'];
+        } else {
+            $data['price'] = preg_replace('/\$+/', '$', $data['price']);
+        }
+
 
         $comic->update($data);
 
