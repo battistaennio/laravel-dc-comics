@@ -4,31 +4,70 @@
     <div class="container my-5">
         <h1>New Comic</h1>
 
+        @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <h4>Attenzione!</h4>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form action="{{ route('comics.store') }}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input name="title" type="text" class="form-control" id="title" placeholder="add title">
+                <input name="title" type="text" class="form-control @error('title') is-invalid @enderror" id="title"
+                    placeholder="add title">
+                @error('title')
+                    <small class="text-danger">*{{ $message }}</small>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="thumb" class="form-label">Thumb</label>
-                <input name="thumb" type="text" class="form-control" id="thumb" placeholder="add thumb">
+                <input name="thumb" type="text" class="form-control @error('thumb') is-invalid @enderror"
+                    id="thumb" placeholder="add thumb">
+                @error('thumb')
+                    <small class="text-danger">*{{ $message }}</small>
+                @enderror
+
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
-                <input name="price" type="text" class="form-control" id="price" placeholder="add price">
+                <input name="price" type="text" class="form-control @error('price') is-invalid @enderror"
+                    id="price" placeholder="add price">
+                @error('price')
+                    <small class="text-danger">*{{ $message }}</small>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="series" class="form-label">Series</label>
-                <input name="series" type="text" class="form-control" id="series" placeholder="add series">
+                <input name="series" type="text" class="form-control @error('series') is-invalid @enderror"
+                    id="series" placeholder="add series">
+                @error('series')
+                    <small class="text-danger">*{{ $message }}</small>
+                @enderror
+
             </div>
             <div class="mb-3">
                 <label for="sale_date" class="form-label">Sale date</label>
-                <input name="sale_date" type="text" class="form-control" id="sale_date" placeholder="add sale date">
+                <input name="sale_date" type="text" class="form-control @error('sale_date') is-invalid @enderror"
+                    id="sale_date" placeholder="add sale date">
+                @error('sale_date')
+                    <small class="text-danger">*{{ $message }}</small>
+                @enderror
+
             </div>
             <div class="mb-3">
                 <label for="type" class="form-label">Type</label>
-                <input name="type" type="text" class="form-control" id="type" placeholder="add type">
+                <input name="type" type="text" class="form-control @error('type') is-invalid @enderror" id="type"
+                    placeholder="add type">
+                @error('type')
+                    <small class="text-danger">*{{ $message }}</small>
+                @enderror
+
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>

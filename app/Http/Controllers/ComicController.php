@@ -31,13 +31,48 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $new_comic = new Comic();
-        $data['slug'] = Helper::generateSlug($data['title'], Comic::class);
-        $new_comic->fill($data);
-        $new_comic->save();
+        // validazione
+        $request->validate(
+            [
+                'title' => 'required|min:3|max:50',
+                'thumb' => 'required|max:255',
+                'price' => 'required|min:3|max:10',
+                'series' => 'required|min:3|max:150',
+                'sale_date' => 'required|max:50',
+                'type' => 'required|max:50'
+            ],
+            [
+                'title.required' => 'Il campo title è obbligatorio',
+                'title.min' => 'Il campo title deve contenere almeno :min caratteri',
+                'title.max' => 'Il campo title può contenere massimo :max caratteri',
 
-        return redirect()->route('comics.show', $new_comic->id);
+                'thumb.required' => 'Il campo thumb è obbligatorio',
+                'thumb.max' => 'Il campo thumb può contenere massimo :max caratteri',
+
+                'price.required' => 'Il campo price è obbligatorio',
+                'price.min' => 'Il campo price deve contenere almeno :min caratteri',
+                'price.max' => 'Il campo price può contenere massimo :max caratteri',
+
+                'series.required' => 'Il campo series è obbligatorio',
+                'series.min' => 'Il campo series deve contenere almeno :min caratteri',
+                'series.max' => 'Il campo series può contenere massimo :max caratteri',
+
+                'sale_date.required' => 'Il campo sale_date è obbligatorio',
+                'sale_date.max' => 'Il campo sale_date può contenere massimo :max caratteri',
+
+                'type.required' => 'Il campo type è obbligatorio',
+                'type.max' => 'Il campo type può contenere massimo :max caratteri',
+            ]
+        );
+
+        $data = $request->all();
+        $data['slug'] = Helper::generateSlug($data['title'], Comic::class);
+        // $new_comic = new Comic();
+        // $new_comic->fill($data);
+        // $new_comic->save();
+        $new_comic = Comic::create($data);
+
+        return redirect()->route('comics.show', $new_comic);
     }
 
     /**
@@ -66,9 +101,7 @@ class ComicController extends Controller
         $data = $request->all();
         $comic = Comic::find($id);
 
-        if ($data['title'] === $comic->title) {
-            $data['slug'] = $comic->slug;
-        } else {
+        if ($data['title'] != $comic->title) {
             $data['slug'] = Helper::generateSlug($data['title'], Comic::class);
         }
 
