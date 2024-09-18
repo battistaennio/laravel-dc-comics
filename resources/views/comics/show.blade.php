@@ -2,11 +2,21 @@
 
 @section('content')
     <div class="container my-5">
+
+        @if (session('edit_confirm'))
+            <div class="alert alert-success" role="alert">
+                {{ session('edit_confirm') }}
+            </div>
+        @endif
+
+
         <h1>
             Comic "{{ $comic->title }}" detail
             <a class="btn btn-warning" href="{{ route('comics.edit', $comic) }}">
                 <i class="fa-solid fa-pencil"></i>
             </a>
+
+            @include('partials.formDelete')
         </h1>
 
         <div class="row justify-content-center">

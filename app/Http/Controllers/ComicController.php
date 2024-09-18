@@ -69,6 +69,7 @@ class ComicController extends Controller
 
         $data = $request->all();
         $data['slug'] = Helper::generateSlug($data['title'], Comic::class);
+        $data['price'] = '$ ' . $data['price'];
         // $new_comic = new Comic();
         // $new_comic->fill($data);
         // $new_comic->save();
@@ -98,7 +99,7 @@ class ComicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ComicRequest $request, string $id)
     {
         $data = $request->all();
         $comic = Comic::find($id);
@@ -109,7 +110,7 @@ class ComicController extends Controller
 
         $comic->update($data);
 
-        return redirect()->route('comics.show', $comic);
+        return redirect()->route('comics.show', $comic)->with('edit_confirm', 'Changes saved successfully');
     }
 
     /**
