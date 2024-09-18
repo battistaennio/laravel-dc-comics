@@ -19,16 +19,16 @@
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input name="title" type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                    placeholder="add title">
+                <input value="{{ old('title') }}" name="title" type="text"
+                    class="form-control @error('title') is-invalid @enderror" id="title" placeholder="add title">
                 @error('title')
                     <small class="text-danger">*{{ $message }}</small>
                 @enderror
             </div>
             <div class="mb-3">
                 <label for="thumb" class="form-label">Thumb</label>
-                <input name="thumb" type="text" class="form-control @error('thumb') is-invalid @enderror"
-                    id="thumb" placeholder="add thumb">
+                <input value="{{ old('thumb') }}" name="thumb" type="text"
+                    class="form-control @error('thumb') is-invalid @enderror" id="thumb" placeholder="add thumb">
                 @error('thumb')
                     <small class="text-danger">*{{ $message }}</small>
                 @enderror
@@ -36,16 +36,16 @@
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
-                <input name="price" type="text" class="form-control @error('price') is-invalid @enderror"
-                    id="price" placeholder="add price">
+                <input value="{{ old('price') }}" name="price" type="text"
+                    class="form-control @error('price') is-invalid @enderror" id="price" placeholder="add price">
                 @error('price')
                     <small class="text-danger">*{{ $message }}</small>
                 @enderror
             </div>
             <div class="mb-3">
                 <label for="series" class="form-label">Series</label>
-                <input name="series" type="text" class="form-control @error('series') is-invalid @enderror"
-                    id="series" placeholder="add series">
+                <input value="{{ old('series') }}" name="series" type="text"
+                    class="form-control @error('series') is-invalid @enderror" id="series" placeholder="add series">
                 @error('series')
                     <small class="text-danger">*{{ $message }}</small>
                 @enderror
@@ -53,8 +53,9 @@
             </div>
             <div class="mb-3">
                 <label for="sale_date" class="form-label">Sale date</label>
-                <input name="sale_date" type="text" class="form-control @error('sale_date') is-invalid @enderror"
-                    id="sale_date" placeholder="add sale date">
+                <input value="{{ old('sale_date') }}" name="sale_date" type="text"
+                    class="form-control @error('sale_date') is-invalid @enderror" id="sale_date"
+                    placeholder="add sale date">
                 @error('sale_date')
                     <small class="text-danger">*{{ $message }}</small>
                 @enderror
@@ -62,8 +63,8 @@
             </div>
             <div class="mb-3">
                 <label for="type" class="form-label">Type</label>
-                <input name="type" type="text" class="form-control @error('type') is-invalid @enderror" id="type"
-                    placeholder="add type">
+                <input value="{{ old('type') }}" name="type" type="text"
+                    class="form-control @error('type') is-invalid @enderror" id="type" placeholder="add type">
                 @error('type')
                     <small class="text-danger">*{{ $message }}</small>
                 @enderror
@@ -71,7 +72,7 @@
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea name="description" class="form-control" id="description" placeholder="add description"></textarea>
+                <textarea name="description" class="form-control" id="description" placeholder="add description">{{ old('description') }}</textarea>
             </div>
 
 
