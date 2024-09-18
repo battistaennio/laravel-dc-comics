@@ -107,6 +107,7 @@ class ComicController extends Controller
         if ($data['title'] != $comic->title) {
             $data['slug'] = Helper::generateSlug($data['title'], Comic::class);
         }
+        $data['price'] = '$ ' . $data['price'];
 
         $comic->update($data);
 

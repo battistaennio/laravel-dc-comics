@@ -20,8 +20,8 @@
             @method('PUT')
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input value="{{ old('title', $comic->title) }}" name="title" type="text" class="form-control"
-                    id="title" placeholder="add title">
+                <input value="{{ old('title', $comic->title) }}" name="title" type="text"
+                    class="form-control @error('title') is-invalid @enderror" id="title" placeholder="add title">
                 @error('title')
                     <small class="text-danger">*{{ $message }}</small>
                 @enderror
@@ -30,8 +30,8 @@
 
             <div class="mb-3">
                 <label for="thumb" class="form-label">Thumb</label>
-                <input value="{{ old('thumb', $comic->thumb) }}" name="thumb" type="text" class="form-control"
-                    id="thumb" placeholder="add thumb">
+                <input value="{{ old('thumb', $comic->thumb) }}" name="thumb" type="text"
+                    class="form-control @error('thumb') is-invalid @enderror" id="thumb" placeholder="add thumb">
                 @error('thumb')
                     <small class="text-danger">*{{ $message }}</small>
                 @enderror
@@ -39,19 +39,25 @@
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input value="{{ old('price', $comic->price) }}" name="price" type="text" class="form-control"
-                    id="price" placeholder="add price">
-                @error('price')
-                    <small class="text-danger">*{{ $message }}</small>
-                @enderror
+                <label for="price" class="form-label input-group">Price</label>
 
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">$</span>
+
+                    <input value="{{ old('price', $comic->price) }}" name="price" type="text"
+                        class="form-control input-group @error('price') is-invalid @enderror" id="price"
+                        placeholder="add price">
+                    @error('price')
+                        <small class="text-danger">*{{ $message }}</small>
+                    @enderror
+
+                </div>
             </div>
 
             <div class="mb-3">
                 <label for="series" class="form-label">Series</label>
-                <input value="{{ old('series', $comic->series) }}" name="series" type="text" class="form-control"
-                    id="series" placeholder="add series">
+                <input value="{{ old('series', $comic->series) }}" name="series" type="text"
+                    class="form-control @error('series') is-invalid @enderror" id="series" placeholder="add series">
                 @error('series')
                     <small class="text-danger">*{{ $message }}</small>
                 @enderror
@@ -61,7 +67,8 @@
             <div class="mb-3">
                 <label for="sale_date" class="form-label">Sale date</label>
                 <input value="{{ old('sale_date', $comic->sale_date) }}" name="sale_date" type="text"
-                    class="form-control" id="sale_date" placeholder="add sale date">
+                    class="form-control @error('sale_date') is-invalid @enderror" id="sale_date"
+                    placeholder="add sale date">
                 @error('sale_date')
                     <small class="text-danger">*{{ $message }}</small>
                 @enderror
@@ -70,8 +77,8 @@
 
             <div class="mb-3">
                 <label for="type" class="form-label">Type</label>
-                <input value="{{ old('type', $comic->type) }}" name="type" type="text" class="form-control"
-                    id="type" placeholder="add type">
+                <input value="{{ old('type', $comic->type) }}" name="type" type="text"
+                    class="form-control @error('type') is-invalid @enderror" id="type" placeholder="add type">
                 @error('type')
                     <small class="text-danger">*{{ $message }}</small>
                 @enderror
