@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Functions\Helper;
+use App\Http\Requests\ComicRequest;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 
@@ -29,42 +30,42 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ComicRequest $request)
     {
         // validazione
-        $request->validate(
-            [
-                'title' => 'required|min:3|max:50',
-                'thumb' => 'required|max:255',
-                'price' => 'required|min:3|max:10',
-                'series' => 'required|min:3|max:150',
-                'sale_date' => 'required|date|max:50',
-                'type' => 'required|max:50'
-            ],
-            [
-                'title.required' => 'Il campo title è obbligatorio',
-                'title.min' => 'Il campo title deve contenere almeno :min caratteri',
-                'title.max' => 'Il campo title può contenere massimo :max caratteri',
+        // $request->validate(
+        //     [
+        //         'title' => 'required|min:3|max:50',
+        //         'thumb' => 'required|max:255',
+        //         'price' => 'required|min:3|max:10',
+        //         'series' => 'required|min:3|max:150',
+        //         'sale_date' => 'required|date|max:50',
+        //         'type' => 'required|max:50'
+        //     ],
+        //     [
+        //         'title.required' => 'Il campo title è obbligatorio',
+        //         'title.min' => 'Il campo title deve contenere almeno :min caratteri',
+        //         'title.max' => 'Il campo title può contenere massimo :max caratteri',
 
-                'thumb.required' => 'Il campo thumb è obbligatorio',
-                'thumb.max' => 'Il campo thumb può contenere massimo :max caratteri',
+        //         'thumb.required' => 'Il campo thumb è obbligatorio',
+        //         'thumb.max' => 'Il campo thumb può contenere massimo :max caratteri',
 
-                'price.required' => 'Il campo price è obbligatorio',
-                'price.min' => 'Il campo price deve contenere almeno :min caratteri',
-                'price.max' => 'Il campo price può contenere massimo :max caratteri',
+        //         'price.required' => 'Il campo price è obbligatorio',
+        //         'price.min' => 'Il campo price deve contenere almeno :min caratteri',
+        //         'price.max' => 'Il campo price può contenere massimo :max caratteri',
 
-                'series.required' => 'Il campo series è obbligatorio',
-                'series.min' => 'Il campo series deve contenere almeno :min caratteri',
-                'series.max' => 'Il campo series può contenere massimo :max caratteri',
+        //         'series.required' => 'Il campo series è obbligatorio',
+        //         'series.min' => 'Il campo series deve contenere almeno :min caratteri',
+        //         'series.max' => 'Il campo series può contenere massimo :max caratteri',
 
-                'sale_date.required' => 'Il campo sale_date è obbligatorio',
-                'sale_date.date' => 'Non hai inserito una data corretta',
-                'sale_date.max' => 'Il campo sale_date può contenere massimo :max caratteri',
+        //         'sale_date.required' => 'Il campo sale_date è obbligatorio',
+        //         'sale_date.date' => 'Non hai inserito una data corretta',
+        //         'sale_date.max' => 'Il campo sale_date può contenere massimo :max caratteri',
 
-                'type.required' => 'Il campo type è obbligatorio',
-                'type.max' => 'Il campo type può contenere massimo :max caratteri',
-            ]
-        );
+        //         'type.required' => 'Il campo type è obbligatorio',
+        //         'type.max' => 'Il campo type può contenere massimo :max caratteri',
+        //     ]
+        // );
 
         $data = $request->all();
         $data['slug'] = Helper::generateSlug($data['title'], Comic::class);
