@@ -32,11 +32,11 @@
                         <td><img class="thumb" src="{{ $comic->thumb }}" alt="{{ $comic->title }}"></td>
                         <td>
                             {{-- dettaglio --}}
-                            <a class="btn btn-success" href="{{ route('comics.show', $comic) }}">
+                            <a title="Dettaglio" class="btn btn-success" href="{{ route('comics.show', $comic) }}">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </a>
                             {{-- modifica --}}
-                            <a class="btn btn-warning" href="{{ route('comics.edit', $comic) }}">
+                            <a title="Modifica" class="btn btn-warning" href="{{ route('comics.edit', $comic) }}">
                                 <i class="fa-solid fa-pencil"></i>
                             </a>
                             {{-- elimina --}}
@@ -45,7 +45,7 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button class="btn btn-danger" type="submit">
+                                <button title="Elimina" class="btn btn-danger" type="submit">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </form>
