@@ -50,7 +50,7 @@ class ComicRequest extends FormRequest
             'series.max' => 'Il campo series può contenere massimo :max caratteri',
 
             'sale_date.required' => 'Il campo sale_date è obbligatorio',
-            'sale_date.date' => 'Non hai inserito una data corretta',
+            'sale_date.date' => 'Non hai inserito una data corretta, il formato consigliato è: AAAA-MM-GG',
             'sale_date.max' => 'Il campo sale_date può contenere massimo :max caratteri',
 
             'type.required' => 'Il campo type è obbligatorio',
