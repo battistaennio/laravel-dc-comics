@@ -36,11 +36,19 @@
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
-                <input value="{{ old('price') }}" name="price" type="text"
-                    class="form-control @error('price') is-invalid @enderror" id="price" placeholder="add price">
-                @error('price')
-                    <small class="text-danger">*{{ $message }}</small>
-                @enderror
+
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">$</span>
+
+                    <input value="{{ old('price') }}" name="price" type="text"
+                        class="form-control input-group @error('price') is-invalid @enderror" id="price"
+                        placeholder="add price">
+
+                    @error('price')
+                        <small class="text-danger">*{{ $message }}</small>
+                    @enderror
+                </div>
+
             </div>
             <div class="mb-3">
                 <label for="series" class="form-label">Series</label>
